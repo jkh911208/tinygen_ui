@@ -31,7 +31,8 @@ function App() {
     setError(null);     // Clear previous error
 
     try {
-      const res = await fetch('http://localhost:8000/gen', {
+      const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:8000';
+      const res = await fetch(`${baseUrl}/gen`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

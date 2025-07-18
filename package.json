@@ -1,5 +1,6 @@
 {
   "name": "tinygen_ui",
+  "homepage": "https://gyuhyongjeon.github.io/tinygen_ui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
