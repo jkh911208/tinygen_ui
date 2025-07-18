@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Add your environment variables here. They must be prefixed with REACT_APP_ for Create React App.
-      REACT_APP_BASE_URL: "https://api.james-tinygen.com"
+      REACT_APP_BASE_URL: "https://api.james-tinygen.online"
       # REACT_APP_ANOTHER_VAR: 'another_value'
     steps:
       - name: Checkout
