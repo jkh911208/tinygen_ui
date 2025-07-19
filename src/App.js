@@ -6,6 +6,7 @@ function App() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const renderDiff = (diffContent) => {
     if (!diffContent) return null;
@@ -29,6 +30,7 @@ function App() {
     e.preventDefault();
     setResponse(null); // Clear previous response
     setError(null);     // Clear previous error
+    setLoading(true);   // Set loading to true when the request starts
 
     try {
       const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:8000';
@@ -49,6 +51,8 @@ function App() {
       setResponse(data);
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false); // Set loading to false when the request finishes (success or error)
     }
   };
 
@@ -79,8 +83,10 @@ function App() {
               style={{ width: '300px', padding: '8px', margin: '10px 0', borderRadius: '4px', border: '1px solid #ccc' }}
             ></textarea>
           </div>
-          <button type="submit" style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>
-            Generate
+          <button type="submit" style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : 'Generate'}
           </button>
         </form>
 
